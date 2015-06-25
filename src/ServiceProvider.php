@@ -90,11 +90,9 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         // If enabled is null, set from the app.debug value
         if (is_null($enabled)) {
             $enabled = $this->app['config']->get('app.debug');
-            $this->app['config']->set('debugbar.enabled', $enabled);
-        }
-
-        if ( ! $enabled) {
-            return;
+			if($enabled === false) {
+				return;
+			}
         }
 
         /** @var LaravelDebugbar $debugbar */
